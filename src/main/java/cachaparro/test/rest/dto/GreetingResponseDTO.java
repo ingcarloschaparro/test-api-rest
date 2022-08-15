@@ -1,6 +1,6 @@
 package cachaparro.test.rest.dto;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import lombok.Data;
 
@@ -8,7 +8,7 @@ import lombok.Data;
 public class GreetingResponseDTO {
 
 	private String greeting;
-	private LocalDate greetingDate;
+	private LocalDateTime greetingDate;
 	private Long greetinType;
 	
 }

@@ -1,6 +1,6 @@
 package cachaparro.test.rest.api;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -26,7 +26,7 @@ public class GreetingApi {
 			){
 		GreetingResponseDTO dto = new GreetingResponseDTO();
 		dto.setGreeting("Hello " + name);
-		dto.setGreetingDate(LocalDate.now());
+		dto.setGreetingDate(LocalDateTime.now());
 		dto.setGreetinType(1L);
 		
 		return new ResponseEntity<GreetingResponseDTO>(dto, HttpStatus.OK);
@@ -40,7 +40,7 @@ public class GreetingApi {
 			){
 		GreetingResponseDTO dto = new GreetingResponseDTO();
 		dto.setGreeting("Bye " + request.getName());
-		dto.setGreetingDate(LocalDate.now());
+		dto.setGreetingDate(LocalDateTime.now());
 		dto.setGreetinType(2L);
 		
 		return new ResponseEntity<GreetingResponseDTO>(dto, HttpStatus.OK);
