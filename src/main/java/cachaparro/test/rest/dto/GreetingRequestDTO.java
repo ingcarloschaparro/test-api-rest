@@ -6,5 +6,6 @@ import lombok.Data;
 public class GreetingRequestDTO {
 
 	private String name;
+	private boolean delay;
 	
 }
