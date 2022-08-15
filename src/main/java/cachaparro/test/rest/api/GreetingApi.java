@@ -36,14 +36,11 @@ public class GreetingApi {
 			@PathVariable(name = "delay") boolean delay
 			){
 		
-		if(delay) {
-			delay();
-		}
-		
 		GreetingResponseDTO dto = new GreetingResponseDTO();
 		dto.setGreeting("Hello " + name);
 		dto.setGreetingDate(LocalDateTime.now());
 		dto.setGreetinType(1L);
+		dto.setDelay(this.delay(delay));
 		
 		return new ResponseEntity<GreetingResponseDTO>(dto, HttpStatus.OK);
 	}
@@ -54,25 +51,26 @@ public class GreetingApi {
 	public ResponseEntity<GreetingResponseDTO> bye(
 			@RequestBody(required = true) GreetingRequestDTO request 
 			){
-		
-		if(request.isDelay()) {
-			delay();
-		}
-		
 		GreetingResponseDTO dto = new GreetingResponseDTO();
 		dto.setGreeting("Bye " + request.getName());
 		dto.setGreetingDate(LocalDateTime.now());
 		dto.setGreetinType(2L);
+		dto.setDelay(this.delay(request.isDelay()));
 		
 		return new ResponseEntity<GreetingResponseDTO>(dto, HttpStatus.OK);
 	}
 	
-	private void delay() {
-		try {
-			int delay = new Random(System.currentTimeMillis()).nextInt(20);
-			TimeUnit.SECONDS.sleep(delay);
-		} catch (InterruptedException ie) {
-		    ie.printStackTrace();
+	private int delay(boolean delay) {
+		if(delay) {
+			try {
+				int delaySec = new Random(System.currentTimeMillis()).nextInt(20);
+				TimeUnit.SECONDS.sleep(delaySec);
+				return delaySec;
+			} catch (InterruptedException ie) {
+			    ie.printStackTrace();
+			}
 		}
+		
+		return 0;
 	}
 }

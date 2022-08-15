@@ -10,5 +10,6 @@ public class GreetingResponseDTO {
 	private String greeting;
 	private LocalDateTime greetingDate;
 	private Long greetinType;
+	private Integer delay;
 	
 }
